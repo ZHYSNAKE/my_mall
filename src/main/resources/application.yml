@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/my_mall?useSSL=false&serverTimezone=Asia/Shanghai&characterEncoding=utf-8&allowPublicKeyRetrieval=true
-    username: root
-    password: 87881092zz
+    username: your_username
+    password: your_password
   sql:
     init:
       mode: never
