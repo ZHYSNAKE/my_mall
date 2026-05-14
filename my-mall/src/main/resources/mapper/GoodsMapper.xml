@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--SQL 写在这里-->
+
+
+<!--用来把 Java 方法和 SQL 语句绑定在一起-->
+<mapper namespace="com.demo.mymall.mapper.GoodsMapper">
+<!--告诉 MyBatis ：这个 XML 文件是给哪个 Java 接口用的-->
+
+    <!--
+        select：这是一个查询操作
+        id="findAllGoods"：对应 GoodsMapper 接口里的 findAllGoods() 方法名
+        resultType="..."：告诉 MyBatis 把查询结果的每一行数据，转换成一个 Goods 对象
+    -->
+    <select id="findAllGoods" resultType="com.demo.mymall.entity.Goods">
+        SELECT id, name,price, image , detail FROM goods
+    </select>
+
+
+
+    <!--
+    searchGoods：根据关键字模糊搜索商品
+    id="searchGoods"        → 对应 GoodsMapper 接口中的方法名
+    resultType="..."        → 查询结果转成 Goods 对象
+-->
+    <select id="searchGoods" resultType="com.demo.mymall.entity.Goods">
+        SELECT id, name, price, image, detail
+        FROM goods
+
+        <!-- #没传递参数前用？占位安全，而$直接传递不安全，动态表名/列名/排序用 -->
+        WHERE name LIKE CONCAT('%', #{keyword}, '%')
+        <!--
+            LIKE: SQL 的模糊匹配关键字
+            CONCAT('%', #{keyword}, '%'): 把 keyword 前后加上 %
+            例如 keyword = "手机"  → 变成 '%手机%'
+            匹配所有 name 字段中包含"手机"的商品
+        -->
+    </select>
+
+</mapper>
+
