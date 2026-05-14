@@ -13,3 +13,9 @@ INSERT INTO goods (name, price, image, detail) VALUES
                                                 ('test', 99.00, '/images/test.jpg', 'test'),
                                                 ('绝地潜兵2蓝币', 79.00, '/images/HellDivers.jpg', 'For Super Earth!'),
                                                 ('绝地潜兵2尸块', 49.00, '/images/HellDivers1.jpg', '自由你大爷的!');
+
+CREATE TABLE user (
+                       id INT PRIMARY KEY AUTO_INCREMENT,
+                       username INT NOT NULL,
+                       password INT NOT NULL
+);
