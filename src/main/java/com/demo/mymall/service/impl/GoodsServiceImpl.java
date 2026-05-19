@@ -24,4 +24,9 @@ public class GoodsServiceImpl implements GoodsService {
     public List<Goods> searchGoods(String keyword) {
         return goodsMapper.searchGoods(keyword);
     }
+
+    @Override
+    public Goods findGoodsById(int id) {
+        return goodsMapper.findGoodsById(id);
+    }
 }

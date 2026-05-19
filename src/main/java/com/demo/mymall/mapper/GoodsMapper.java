@@ -13,4 +13,6 @@ public interface GoodsMapper {
 
     // 新增方法：根据关键字搜索商品
     List<Goods> searchGoods(String keyword);
+
+    Goods findGoodsById(int id);
 }

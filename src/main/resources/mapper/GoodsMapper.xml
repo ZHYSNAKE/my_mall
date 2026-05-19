@@ -38,5 +38,11 @@
         -->
     </select>
 
+    <select id="findGoodsById" resultType="com.demo.mymall.entity.Goods">
+        SELECT id, name, price, image, detail
+        FROM goods
+        WHERE id = #{id} <!-- #{}从传入的参数中获取值 -->
+    </select>
+
 </mapper>
 

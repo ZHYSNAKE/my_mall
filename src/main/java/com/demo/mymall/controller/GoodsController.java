@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -61,4 +62,23 @@ public class GoodsController {
         model.addAttribute("currentTime", java.time.LocalDateTime.now());
         return "goods/list";//告诉 Spring：用 goods/list.html 这个模板去显示页面；Spring约定从templates里找
     }
+
+    @GetMapping("/goods/{id}")
+    public String details(
+                          @PathVariable int id, //@PathVariable 从URL里获取数据
+                          Model model){
+        Goods goods = goodsService.findGoodsById(id);
+        model.addAttribute("goods", goods);
+        return "goods/details";
+    }
+
+    @GetMapping("/goods/buy")
+    public String buy(
+            @PathVariable int id, //@PathVariable 从URL里获取数据
+            Model model){
+        Goods goods = goodsService.findGoodsById(id);
+        model.addAttribute("goods", goods);
+        return "goods/details";
+    }
 }
+

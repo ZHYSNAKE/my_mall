@@ -33,6 +33,8 @@
             padding: 15px;           /* 内边距：卡片内部内容与边框之间留15像素空白 */
             width: 200px;            /* 宽度：每个卡片固定200像素宽 */
             text-align: center;      /* 文字对齐：卡片内的文字水平居中 */
+            align-items: center;     /* 图片水平居中 */
+            flex-direction: column;display: flex; /* 竖直排列 */
         }
 
         /*
@@ -112,7 +114,7 @@
         class="goods-card"
         - CSS 样式：边框、内边距、固定宽度、文字居中
     -->
-    <div class="goods-card" th:each="goods : ${goodsList}">
+    <div class="goods-card" th:each="goods : ${goodsList}" style="">
 
         <!--
             商品图片
@@ -131,7 +133,7 @@
             th:text="${goods.name}"    → 动态显示商品名称
             标签内的"商品名称"是占位符，运行时会被真实数据替换
         -->
-        <h3 th:text="${goods.name}">商品名称</h3>
+        <a th:href="@{/goods/{id}(id=${goods.id})}" th:text="${goods.name}">商品名称</a>
 
         <!--
             商品价格
