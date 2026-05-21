@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.demo.mymall.mapper.AddressMapper">
+
+    <!--
+        resultType    输出参数类型
+        parameterType 输入参数类型
+    -->
+
+    <select id="findByUserId" resultType="com.demo.mymall.entity.Address">
+        SELECT * from address WHERE userId = #{userId}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO address(userId,receiver,phone,province,city,district,detail,isDefault) 
+        VALUES (#{userId},#{receiver},#{phone},#{province},#{city},#{district},#{detail},#{isDefault})
+    </insert>
+    
+    <update id="update" parameterType="com.demo.mymall.entity.Address">
+        UPDATE address
+        SET receiver = #{receiver},
+            phone = #{phone},
+            province = #{province},
+            city = #{city},
+            district = #{district},
+            detail = #{detail}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="com.demo.mymall.entity.Address">
+           DELETE FROM address WHERE id = #{id}
+    </delete>
+    <delete id="deleteById" parameterType="com.demo.mymall.entity.Address">
+        DELETE FROM address WHERE id = #{id}
+    </delete>
+    
+    <update id="set">
+        UPDATE address SET isDefault = TRUE WHERE userId = #{userId} AND id = #{id}
+    </update>
+</mapper>

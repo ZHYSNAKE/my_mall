@@ -38,7 +38,7 @@
         margin: 0 auto	容器水平居中
         padding-top:    整体下移
      -->
-    <div style="display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto;padding-top: 20px;">
+    <div style="display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto;padding-top: 20px;text-align: center">
         <!-- 用户名输入框 -->
         <!--
             type="text" 明文 输入什么就是什么
@@ -80,12 +80,14 @@
         <button type="submit" style="padding: 8px 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
             登录
         </button>
-
-        <a href="/register" style="padding: 8px 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            注册
-        </a>
     </div>
 </form>
+
+<div style="max-width: 300px; margin: 0 auto; text-align: center">
+    <a href="/register" style="display: block; padding: 8px 16px; background-color: #28a745; color: white; text-decoration: none; border-radius: 4px;">
+        注册
+    </a>
+</div>
 
 </body>
 </html>

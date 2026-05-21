@@ -34,7 +34,7 @@ public class UserController {
         model.addAttribute("password", password);
 
         // 调用 Service 层进行登录验证
-        User user = userService.login(username, password);
+        User user = userService.login(username, password,session);
 
         if (user != null) {
             // 登录成功，保存用户信息到 session

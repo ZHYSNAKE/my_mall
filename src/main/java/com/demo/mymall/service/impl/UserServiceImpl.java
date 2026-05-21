@@ -4,6 +4,7 @@ package com.demo.mymall.service.impl;
 import com.demo.mymall.entity.User;
 import com.demo.mymall.mapper.UserMapper;
 import com.demo.mymall.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,12 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public User login(String username, String password){
+    public User login(String username, String password , HttpSession session){
         User user = userMapper.findByUsername(username);
 
         if(user != null) {
             if(user.getPassword().equals(password)) {
+                session.setAttribute("user", user);
                 return user;
             }
         }

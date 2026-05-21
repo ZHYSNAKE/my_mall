@@ -6,16 +6,11 @@
 </head>
 
 
-<!-- TODO:
-     评价
-     相关推荐
-     购物车
-     购买
--->
 
 <body>
 
-<a href="/">返回</a>
+    <a href="/">返回</a>
+
     <div style="width: 500px; margin: 0 auto;flex-direction: column;display: flex;align-items: center;text-align: center;gap: 30px">
         <div style="gap: 20px;display: flex;flex-direction: column">
             <img th:src="${goods.image}" alt="商品图片"
@@ -36,9 +31,10 @@
         <div style="">
             <button type="submit" style="padding: 8px 16px;">加入购物车</button>
 
-            <a href="/goods/buy" style="padding: 8px 16px;">购买</a>
+            <a th:href="@{/goods/{id}/buy(id=${goods.id})}" style="padding: 8px 16px;">购买</a>
         </div>
 
     </div>
+
 </body>
 </html>

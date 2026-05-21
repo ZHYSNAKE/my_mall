@@ -1,6 +1,8 @@
 package com.demo.mymall.controller;
 
+import com.demo.mymall.entity.Address;
 import com.demo.mymall.entity.Goods;
+import com.demo.mymall.entity.User;
 import com.demo.mymall.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.nio.file.Files;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //处理浏览器请求
 
@@ -72,13 +77,17 @@ public class GoodsController {
         return "goods/details";
     }
 
-    @GetMapping("/goods/buy")
+    @GetMapping("/goods/{id}/buy")
     public String buy(
             @PathVariable int id, //@PathVariable 从URL里获取数据
             Model model){
         Goods goods = goodsService.findGoodsById(id);
         model.addAttribute("goods", goods);
-        return "goods/details";
+
+        return "goods/buy";
     }
+
+    // @ResponseBody // 这个方法返回的数据直接发给前端，而不是跳转到一个页面。
+
 }
 
