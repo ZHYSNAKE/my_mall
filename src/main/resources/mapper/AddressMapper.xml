@@ -35,7 +35,7 @@
         DELETE FROM address WHERE id = #{id}
     </delete>
     
-    <update id="set">
-        UPDATE address SET isDefault = TRUE WHERE userId = #{userId} AND id = #{id}
-    </update>
+<!--    <update id="set">-->
+<!--        UPDATE address SET isDefault = TRUE WHERE userId = #{userId} AND id = #{id}-->
+<!--    </update>-->
 </mapper>

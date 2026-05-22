@@ -33,20 +33,25 @@ public class UserController {
         model.addAttribute("username", username);
         model.addAttribute("password", password);
 
+        System.out.println("=== 开始登录 ===");
+        System.out.println("用户名：" + username);
+
         // 调用 Service 层进行登录验证
-        User user = userService.login(username, password,session);
+        User user = userService.login(username, password, session);
+        System.out.println("查询到的用户：" + user);
 
         if (user != null) {
             // 登录成功，保存用户信息到 session
             session.setAttribute("loginUser", user);
+            System.out.println("Session 中的 user：" + session.getAttribute("loginUser"));
+            System.out.println("登录用户的ID：" + user.getId());
             // 重定向到用户列表页（或首页）
-           return "redirect:/";// redirect: 后面的是跳到的网站地址
+            return "redirect:/";// redirect: 后面的是跳到的网站地址
         } else {
             // 登录失败，返回错误信息
+            System.out.println("登录失败");
             model.addAttribute("error", "用户名或密码错误");
-            model.addAttribute("username", username);
-            model.addAttribute("password", password);
-            return "user/login"; // 重新返回登录页
+            return "user/login";
         }
     }
 
